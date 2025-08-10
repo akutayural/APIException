@@ -15,13 +15,13 @@
         <link rel="canonical" href="https://ahmetkutayural.dev/usage/response_model/">
       
       
-        <link rel="prev" href="../quick_start/">
+        <link rel="prev" href="../register_exception_handlers/">
       
       
         <link rel="next" href="../custom_codes/">
       
       
-      <link rel="icon" href="../../assets/favicon.ico">
+      <link rel="icon" href="../../favicon/favicon.ico">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.15">
     
     
@@ -289,7 +289,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="./" class="md-tabs__link">
+        <a href="../register_exception_handlers/" class="md-tabs__link">
           
   
   
@@ -318,6 +318,25 @@
         </a>
       </li>
     
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../examples/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  📂 Examples
+
+      </a>
+    </li>
   
 
       
@@ -516,6 +535,29 @@
             🧩 Usage
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../register_exception_handlers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    register_exception_handlers
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -793,9 +835,54 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/rfc7807/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    RFC 7807 Integration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    📂 Examples
+    
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -871,7 +958,10 @@
 <h1 id="using-responsemodel">🧩 Using <code>ResponseModel</code><a class="headerlink" href="#using-responsemodel" title="Permanent link">&para;</a></h1>
 <p>A <strong>clean, predictable response structure</strong> is the heart of a stable API.</p>
 <p>The <code>ResponseModel</code> in <strong>APIException</strong> makes sure every success <strong>and</strong> error response always has the same JSON format — easy to document, easy to parse, and friendly for frontend teams.</p>
-<p><img alt="response_model.gif" src="../response_model.gif" /></p>
+<video autoplay loop muted playsinline width="900">
+  <source src="../apiexception-responseModel.mp4" type="video/mp4">
+</video>
+
 <hr />
 <h2 id="how-it-works">✅ How It Works<a class="headerlink" href="#how-it-works" title="Permanent link">&para;</a></h2>
 <p>Every API response includes:</p>
@@ -897,28 +987,25 @@
 <h2 id="example">📌 Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h2>
 <h3 id="import-and-use">✅ Import and Use<a class="headerlink" href="#import-and-use" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">fastapi</span><span class="w"> </span><span class="kn">import</span> <span class="n">FastAPI</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">APIException</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">Field</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">api_exception</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
     <span class="n">ResponseModel</span><span class="p">,</span>
     <span class="n">APIResponse</span><span class="p">,</span>
     <span class="n">APIException</span><span class="p">,</span>
     <span class="n">ExceptionStatus</span><span class="p">,</span>
     <span class="n">BaseExceptionCode</span>
 <span class="p">)</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">Field</span>
 
 <span class="n">app</span> <span class="o">=</span> <span class="n">FastAPI</span><span class="p">()</span>
+<span class="n">register_exception_handlers</span><span class="p">(</span><span class="n">app</span><span class="o">=</span><span class="n">app</span><span class="p">)</span>
+
 
 <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">Custom Exception Class that you can define in your code to make the backend responses look more standardized.</span>
 <span class="sd">Just extend the `BaseExceptionCode` and use it. </span>
 <span class="sd">&#39;&#39;&#39;</span>
 <span class="k">class</span><span class="w"> </span><span class="nc">CustomExceptionCode</span><span class="p">(</span><span class="n">BaseExceptionCode</span><span class="p">):</span>
-    <span class="n">USER_NOT_FOUND</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;USR-404&quot;</span><span class="p">,</span> <span class="s2">&quot;User not found.&quot;</span><span class="p">,</span> <span class="s2">&quot;The user ID does not exist.&quot;</span><span class="p">)</span>
     <span class="n">INVALID_API_KEY</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;API-401&quot;</span><span class="p">,</span> <span class="s2">&quot;Invalid API key.&quot;</span><span class="p">,</span> <span class="s2">&quot;Provide a valid API key.&quot;</span><span class="p">)</span>
-    <span class="n">PERMISSION_DENIED</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;PERM-403&quot;</span><span class="p">,</span> <span class="s2">&quot;Permission denied.&quot;</span><span class="p">,</span> <span class="s2">&quot;Access to this resource is forbidden.&quot;</span><span class="p">)</span>
-    <span class="n">VALIDATION_ERROR</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;VAL-422&quot;</span><span class="p">,</span> <span class="s2">&quot;Validation Error&quot;</span><span class="p">,</span> <span class="s2">&quot;Input validation failed.&quot;</span><span class="p">)</span>
-    <span class="n">TYPE_ERROR</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;TYPE-400&quot;</span><span class="p">,</span> <span class="s2">&quot;Type error.&quot;</span><span class="p">,</span> <span class="s2">&quot;A type mismatch occurred in the request.&quot;</span><span class="p">)</span>  <span class="c1"># &lt;- EKLENDİ</span>
-
 
 
 <span class="k">class</span><span class="w"> </span><span class="nc">ApiKeyModel</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
@@ -955,7 +1042,7 @@
 <span class="w">  </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;The provided API key is valid.&quot;</span>
 <span class="p">}</span>
 </code></pre></div>
-<p><img alt="successful_response.gif" src="../successful_response.gif" /></p>
+<p><img alt="successful_response.gif" src="../apiexception-responseModelValidKey.gif" /></p>
 <h3 id="error-response">❌ Error Response<a class="headerlink" href="#error-response" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
@@ -965,7 +1052,10 @@
 <span class="w">  </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Provide a valid API key.&quot;</span>
 <span class="p">}</span>
 </code></pre></div>
-<p><img alt="error_case_response.gif" src="../error_case_response.gif" /></p>
+<video autoplay loop muted playsinline width="900">
+  <source src="../apiexception-responseModelInvalidKey.mp4" type="video/mp4">
+</video>
+
 <hr />
 <p>No matter what happens — <strong>same shape, same fields, always predictable.</strong></p>
 <h2 id="why-use-it">⚡ Why Use It?<a class="headerlink" href="#why-use-it" title="Permanent link">&para;</a></h2>

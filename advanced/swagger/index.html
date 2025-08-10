@@ -21,7 +21,7 @@
         <link rel="next" href="../logging/">
       
       
-      <link rel="icon" href="../../assets/favicon.ico">
+      <link rel="icon" href="../../favicon/favicon.ico">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.15">
     
     
@@ -287,7 +287,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../usage/response_model/" class="md-tabs__link">
+        <a href="../../usage/register_exception_handlers/" class="md-tabs__link">
           
   
   
@@ -318,6 +318,25 @@
         </a>
       </li>
     
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../examples/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  📂 Examples
+
+      </a>
+    </li>
   
 
       
@@ -513,6 +532,29 @@
             🧩 Usage
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../usage/register_exception_handlers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    register_exception_handlers
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -720,6 +762,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#example-apiresponserfc7807" class="md-nav__link">
+    <span class="md-ellipsis">
+      ⚙️ Example: APIResponse.rfc7807()
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#tips" class="md-nav__link">
     <span class="md-ellipsis">
       ⚡ Tips
@@ -769,9 +820,54 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rfc7807/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    RFC 7807 Integration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    📂 Examples
+    
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -847,10 +943,16 @@
 <h1 id="swagger-integration">📚 Swagger Integration<a class="headerlink" href="#swagger-integration" title="Permanent link">&para;</a></h1>
 <p>One of the best parts of <strong>APIException</strong> is how cleanly it integrates with <code>Swagger (OpenAPI)</code>.</p>
 <p>Your success and error responses get documented with clear, predictable schemas — so your consumers, frontend teams, and testers know exactly what to expect.</p>
+<blockquote>
+<p>💡 Unlike many solutions that omit <code>null</code> fields from example responses, <strong>APIException</strong> explicitly includes them.<br />
+This ensures the <strong>full shape of the response model</strong> is preserved in the documentation, even when some values are <code>null</code>.</p>
+</blockquote>
 <hr />
 <h2 id="how-it-works">✅ How it works<a class="headerlink" href="#how-it-works" title="Permanent link">&para;</a></h2>
 <p>Use the <code>response_model</code> parameter for your success schema,
-and <code>APIResponse.default()</code> or <code>APIResponse.custom()</code> to document <strong>expected error cases</strong>.</p>
+and <code>APIResponse.default()</code> for default error code values,
+<code>APIResponse.custom(*items)</code> for custom error codes and
+<code>APIResponse.rfc7807(*items)</code> for RFC7807 Standart response with customer error codes to document <strong>expected error cases</strong>.</p>
 <hr />
 <h2 id="example-apiresponsedefault">⚙️ Example: <code>APIResponse.default()</code><a class="headerlink" href="#example-apiresponsedefault" title="Permanent link">&para;</a></h2>
 <p>This documents your success response plus the default errors (400, 401, 403, 404, 422, 500).</p>
@@ -861,7 +963,7 @@ and <code>APIResponse.default()</code> or <code>APIResponse.custom()</code> to d
 <span class="p">)</span>
 </code></pre></div>
 <p>When you open <strong>Swagger UI</strong>, it will show all the possible success and error cases:</p>
-<p><img alt="APIResponse.default()" src="../img_3.png" /></p>
+<p><img alt="APIResponse.default()" src="../img_1.png" /></p>
 <hr />
 <h2 id="example-apiresponsecustom">⚙️ Example: <code>APIResponse.custom()</code><a class="headerlink" href="#example-apiresponsecustom" title="Permanent link">&para;</a></h2>
 <p>Want more control?</p>
@@ -877,10 +979,28 @@ and <code>APIResponse.default()</code> or <code>APIResponse.custom()</code> to d
 </code></pre></div>
 In <strong>Swagger UI</strong>, your custom error cases will show up clearly alongside your success model:</p>
 <p><img alt="APIResponse.custom()" src="../img_3.png" /></p>
+<h2 id="example-apiresponserfc7807">⚙️ Example: <code>APIResponse.rfc7807()</code><a class="headerlink" href="#example-apiresponserfc7807" title="Permanent link">&para;</a></h2>
+<p>The exception messages will be formatted as RFC 7807.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">schemas.response_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">ResponseModel</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">api_exception</span><span class="w"> </span><span class="kn">import</span> <span class="n">APIResponse</span>
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+    <span class="s2">&quot;/rfc7807&quot;</span><span class="p">,</span>
+    <span class="n">response_model</span><span class="o">=</span><span class="n">ResponseModel</span><span class="p">[</span><span class="n">UserResponse</span><span class="p">],</span>
+    <span class="n">responses</span><span class="o">=</span><span class="n">APIResponse</span><span class="o">.</span><span class="n">rfc7807</span><span class="p">(</span>
+        <span class="p">(</span><span class="mi">401</span><span class="p">,</span> <span class="n">CustomExceptionCode</span><span class="o">.</span><span class="n">INVALID_API_KEY</span><span class="p">,</span> <span class="s2">&quot;https://example.com/errors/unauthorized&quot;</span><span class="p">,</span> <span class="s2">&quot;/account/info&quot;</span><span class="p">),</span>
+        <span class="p">(</span><span class="mi">403</span><span class="p">,</span> <span class="n">CustomExceptionCode</span><span class="o">.</span><span class="n">PERMISSION_DENIED</span><span class="p">,</span> <span class="s2">&quot;https://example.com/errors/forbidden&quot;</span><span class="p">,</span> <span class="s2">&quot;/admin/panel&quot;</span><span class="p">),</span>
+        <span class="p">(</span><span class="mi">422</span><span class="p">,</span> <span class="n">CustomExceptionCode</span><span class="o">.</span><span class="n">VALIDATION_ERROR</span><span class="p">,</span> <span class="s2">&quot;https://example.com/errors/unprocessable-entity&quot;</span><span class="p">,</span> <span class="s2">&quot;/users/create&quot;</span><span class="p">)</span>
+    <span class="p">),</span>
+<span class="p">)</span>
+</code></pre></div>
+<p><img alt="APIResponse.rfc7807()" src="../img_2.png" /></p>
+<p>Want to go deeper? Read the <a href="../rfc7807/">RFC 7807 Standard</a></p>
 <hr />
 <h2 id="tips">⚡ Tips<a class="headerlink" href="#tips" title="Permanent link">&para;</a></h2>
 <p>✅ APIResponse.default() is perfect for general endpoints that follow standard error codes.</p>
-<p>✅ APIResponse.custom() gives you precise control for business-specific exceptions.</p>
+<p>✅ APIResponse.custom(<em>items) gives you precise control for business-specific exceptions.
+✅ Use APIResponse.rfc7807(</em>items) to handle business-specific exceptions with full control, fully compliant with the RFC 7807 standard.</p>
 <p>No more incomplete or confusing Swagger docs!</p>
 <hr />
 <h2 id="next">📚 Next<a class="headerlink" href="#next" title="Permanent link">&para;</a></h2>
@@ -890,6 +1010,8 @@ Check <a href="../logging/">🪵 Logging &amp; Debug</a></p>
 See <a href="../../usage/response_model/">✅ Response Model</a></p>
 <p>✔️ Want to add fallback error handling?<br />
 See <a href="../../usage/fallback/">🪓 Fallback Middleware</a></p>
+<p>✔️ Want to align your API with the RFC7807 standard?<br />
+See <a href="../rfc7807/">🪓 RFC7807 Support</a></p>
 
 
 

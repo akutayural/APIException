@@ -19,7 +19,7 @@
         <link rel="next" href="installation/">
       
       
-      <link rel="icon" href="assets/favicon.ico">
+      <link rel="icon" href="favicon/favicon.ico">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.15">
     
     
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#apiexception-for-fastapi" class="md-skip">
+        <a href="#apiexception-standardised-exception-handling-for-fastapi" class="md-skip">
           Skip to content
         </a>
       
@@ -287,7 +287,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="usage/response_model/" class="md-tabs__link">
+        <a href="usage/register_exception_handlers/" class="md-tabs__link">
           
   
   
@@ -316,6 +316,25 @@
         </a>
       </li>
     
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="examples/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  📂 Examples
+
+      </a>
+    </li>
   
 
       
@@ -496,6 +515,51 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#-uncaught-exception-api-response" class="md-nav__link">
+    <span class="md-ellipsis">
+      - Uncaught Exception API Response?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clear-consistent-responses" class="md-nav__link">
+    <span class="md-ellipsis">
+      💡 Clear &amp; Consistent Responses
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#frontend-integration-advantages" class="md-nav__link">
+    <span class="md-ellipsis">
+      💡 Frontend Integration Advantages
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#backend-maintainability-advantages" class="md-nav__link">
+    <span class="md-ellipsis">
+      💡 Backend Maintainability Advantages
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logging-debugging-flexibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔍 Logging &amp; Debugging Flexibility
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -523,6 +587,15 @@
   <a href="#core-principles" class="md-nav__link">
     <span class="md-ellipsis">
       ✨ Core Principles
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#benchmark" class="md-nav__link">
+    <span class="md-ellipsis">
+      📊 Benchmark
     </span>
   </a>
   
@@ -631,6 +704,29 @@
             🧩 Usage
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="usage/register_exception_handlers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    register_exception_handlers
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -797,9 +893,54 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="advanced/rfc7807/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    RFC 7807 Integration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="examples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    📂 Examples
+    
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -872,15 +1013,31 @@
   
 
 
-<h1 id="apiexception-for-fastapi"><strong>APIException</strong> For FastAPI<a class="headerlink" href="#apiexception-for-fastapi" title="Permanent link">&para;</a></h1>
+<p><link rel="icon" type="image/x-icon" href="favicon/favicon.ico"></p>
+<h1 id="apiexception-standardised-exception-handling-for-fastapi">APIException: Standardised Exception Handling for FastAPI<a class="headerlink" href="#apiexception-standardised-exception-handling-for-fastapi" title="Permanent link">&para;</a></h1>
 <hr />
 <h2 id="quick-installation">⚡ Quick Installation<a class="headerlink" href="#quick-installation" title="Permanent link">&para;</a></h2>
 <p>Download the package from PyPI and install it using pip:
 <div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>apiexception
+</code></pre></div>
+<img alt="Installing the APIException for FastAPI" src="assets/apiexception-indexPipInstallApiexception.gif" /></p>
+<p>If you already have <strong><a href="https://python-poetry.org/docs/">Poetry</a></strong> and
+the <strong><a href="https://docs.astral.sh/uv/">uv</a></strong> together, you can install it with:</p>
+<div class="highlight"><pre><span></span><code>uv<span class="w"> </span>add<span class="w"> </span>apiexception
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># You can also use the `uv` command to install it:</span>
+uv<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>apiexception
+
+<span class="c1"># Or, if you prefer using Poetry:</span>
+poetry<span class="w"> </span>add<span class="w"> </span>apiexception
+</code></pre></div>
+<p>After installation, verify it’s working:
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>show<span class="w"> </span>apiexception
 </code></pre></div></p>
-<p><img alt="Installing the APIException for FastAPI" src="pip-install-apiexception-1.gif" /></p>
-<p>Just import the <code>register_exception_handlers</code> function from <code>APIException</code> and call it with your FastAPI app instance to set up global exception handling:
-<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">APIException</span><span class="w"> </span><span class="kn">import</span> <span class="n">register_exception_handlers</span>
+<hr />
+<p>Now that you have the package installed, let’s get started with setting up your FastAPI app.
+Just import the <code>register_exception_handlers</code> function from <code>apiexception</code> and call it with your FastAPI app instance to set up global exception handling:
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">api_exception</span><span class="w"> </span><span class="kn">import</span> <span class="n">register_exception_handlers</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">fastapi</span><span class="w"> </span><span class="kn">import</span> <span class="n">FastAPI</span>
 <span class="n">app</span> <span class="o">=</span> <span class="n">FastAPI</span><span class="p">()</span>
 <span class="n">register_exception_handlers</span><span class="p">(</span><span class="n">app</span><span class="o">=</span><span class="n">app</span><span class="p">)</span>
@@ -890,9 +1047,16 @@ That’s it — copy, paste, and you’re good to go. So easy, isn't it? </p>
 Exception handling will be logged, and unexpected errors will return a clear JSON response instead of FastAPI’s default HTML error page.</p>
 <hr />
 <h2 id="see-it-in-action">🔍 <strong>See It in Action!</strong><a class="headerlink" href="#see-it-in-action" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">fastapi</span><span class="w"> </span><span class="kn">import</span> <span class="n">FastAPI</span><span class="p">,</span> <span class="n">Path</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">APIException</span><span class="w"> </span><span class="kn">import</span> <span class="n">APIException</span><span class="p">,</span> <span class="n">ExceptionStatus</span><span class="p">,</span> <span class="n">register_exception_handlers</span><span class="p">,</span> <span class="n">ResponseModel</span><span class="p">,</span> <span class="n">APIResponse</span><span class="p">,</span> <span class="n">BaseExceptionCode</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">fastapi</span><span class="w"> </span><span class="kn">import</span> <span class="n">FastAPI</span><span class="p">,</span> <span class="n">Path</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">Field</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">api_exception</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">APIException</span><span class="p">,</span>
+    <span class="n">BaseExceptionCode</span><span class="p">,</span>
+    <span class="n">ResponseModel</span><span class="p">,</span>
+    <span class="n">register_exception_handlers</span><span class="p">,</span>
+    <span class="n">APIResponse</span>
+<span class="p">)</span>
 
 <span class="n">app</span> <span class="o">=</span> <span class="n">FastAPI</span><span class="p">()</span>
 
@@ -900,10 +1064,6 @@ Exception handling will be logged, and unexpected errors will return a clear JSO
 <span class="c1"># error handling and response structure</span>
 <span class="n">register_exception_handlers</span><span class="p">(</span><span class="n">app</span><span class="o">=</span><span class="n">app</span><span class="p">)</span>
 
-<span class="c1"># Create the validation model for your response</span>
-<span class="k">class</span><span class="w"> </span><span class="nc">UserResponse</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
-    <span class="nb">id</span><span class="p">:</span> <span class="nb">int</span>
-    <span class="n">username</span><span class="p">:</span> <span class="nb">str</span>
 
 <span class="c1"># Define your custom exception codes extending BaseExceptionCode</span>
 <span class="k">class</span><span class="w"> </span><span class="nc">CustomExceptionCode</span><span class="p">(</span><span class="n">BaseExceptionCode</span><span class="p">):</span>
@@ -912,35 +1072,72 @@ Exception handling will be logged, and unexpected errors will return a clear JSO
     <span class="n">PERMISSION_DENIED</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;PERM-403&quot;</span><span class="p">,</span> <span class="s2">&quot;Permission denied.&quot;</span><span class="p">,</span> <span class="s2">&quot;Access to this resource is forbidden.&quot;</span><span class="p">)</span>
 
 
+<span class="c1"># Let&#39;s assume you have a UserModel that represents the user data</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">UserModel</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="nb">id</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+    <span class="n">username</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+
+
+<span class="c1"># Create the validation model for your response.</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">UserResponse</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">users</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">UserModel</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;List of user objects&quot;</span><span class="p">)</span>
+
+
 <span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/user/</span><span class="si">{user_id}</span><span class="s2">&quot;</span><span class="p">,</span>
-    <span class="n">response_model</span><span class="o">=</span><span class="n">ResponseModel</span><span class="p">[</span><span class="n">UserResponse</span><span class="p">],</span>
-    <span class="n">responses</span><span class="o">=</span><span class="n">APIResponse</span><span class="o">.</span><span class="n">default</span><span class="p">()</span>
-<span class="p">)</span>
+         <span class="n">response_model</span><span class="o">=</span><span class="n">ResponseModel</span><span class="p">[</span><span class="n">UserResponse</span><span class="p">],</span>
+         <span class="n">responses</span><span class="o">=</span><span class="n">APIResponse</span><span class="o">.</span><span class="n">default</span><span class="p">()</span>
+         <span class="p">)</span>
 <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">user</span><span class="p">(</span><span class="n">user_id</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">Path</span><span class="p">()):</span>
     <span class="k">if</span> <span class="n">user_id</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
         <span class="k">raise</span> <span class="n">APIException</span><span class="p">(</span>
             <span class="n">error_code</span><span class="o">=</span><span class="n">CustomExceptionCode</span><span class="o">.</span><span class="n">USER_NOT_FOUND</span><span class="p">,</span>
             <span class="n">http_status_code</span><span class="o">=</span><span class="mi">401</span><span class="p">,</span>
         <span class="p">)</span>
-    <span class="n">data</span> <span class="o">=</span> <span class="n">UserResponse</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">username</span><span class="o">=</span><span class="s2">&quot;John Doe&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">user_id</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">/</span> <span class="n">b</span>  <span class="c1"># This will raise ZeroDivisionError and be caught by the global exception handler</span>
+        <span class="k">return</span> <span class="n">c</span>
+
+    <span class="n">users</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">UserModel</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">username</span><span class="o">=</span><span class="s2">&quot;John Doe&quot;</span><span class="p">),</span>
+        <span class="n">UserModel</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">username</span><span class="o">=</span><span class="s2">&quot;Jane Smith&quot;</span><span class="p">),</span>
+        <span class="n">UserModel</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">username</span><span class="o">=</span><span class="s2">&quot;Alice Johnson&quot;</span><span class="p">)</span>
+    <span class="p">]</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">UserResponse</span><span class="p">(</span><span class="n">users</span><span class="o">=</span><span class="n">users</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">ResponseModel</span><span class="p">[</span><span class="n">UserResponse</span><span class="p">](</span>
         <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span>
         <span class="n">description</span><span class="o">=</span><span class="s2">&quot;User found and returned.&quot;</span>
     <span class="p">)</span>
 </code></pre></div>
 <p>When you run your FastAPI app and open <strong>Swagger UI</strong> (<code>/docs</code>),<br />
-your endpoints will display <strong>clean, predictable response schemas</strong> like this:</p>
-<p><img alt="Consistent Swagger Responses" src="_user_%7Buser_id%7D.gif" /></p>
+your endpoints will display <strong>clean, predictable response schemas</strong> like this below:</p>
+<video autoplay loop muted playsinline width="900">
+  <source src="assets/apiexception-indexBasicUsage-1.mp4" type="video/mp4">
+</video>
+
 <h4 id="-successful-api-response">- Successful API Response?<a class="headerlink" href="#-successful-api-response" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;username&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;John Doe&quot;</span>
+<span class="w">    </span><span class="nt">&quot;users&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;username&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;John Doe&quot;</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;username&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Jane Smith&quot;</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;username&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Alice Johnson&quot;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
 <span class="w">  </span><span class="p">},</span>
 <span class="w">  </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SUCCESS&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Operation completed successfully.&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;error_code&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;User fetched successfully.&quot;</span>
+<span class="w">  </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;User found.&quot;</span>
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="-error-api-response">- Error API Response?<a class="headerlink" href="#-error-api-response" title="Permanent link">&para;</a></h4>
@@ -954,13 +1151,93 @@ your endpoints will display <strong>clean, predictable response schemas</strong>
 </code></pre></div>
 In both cases, the response structure is <strong>consistent</strong>.</p>
 <ul>
-<li>🟢 <strong>200</strong>: Success responses are clearly documented with your data model.</li>
-<li>🔑 <strong>401/403</strong>: Custom error codes &amp; messages show exactly what clients should expect.</li>
-<li>🔍 No more guesswork — your consumers, frontend teams, and testers see exactly how your API behaves for success <strong>and</strong> error cases.</li>
-<li>✅ Bonus: Even <strong><code>unexpected server-side issues</code></strong> — like database errors, unhandled exceptions, or third-party failures — still return a consistent JSON response that follows your ResponseModel schema.
-No more raw HTML 500 pages! Every error is logged automatically so you always have a clear trail of what went wrong.</li>
+<li>In the example above, when the <code>user_id</code> is <code>1</code>, it raises an <code>APIException</code> with a custom <code>error_code</code>, the response is formatted according to the <code>ResponseModel</code> and it's logged <strong>automatically</strong> as shown below:</li>
 </ul>
-<p>This is how <strong>APIException</strong> helps you build trustable, professional APIs from day one!</p>
+<p><img alt="apiexception-indexApiExceptionLog.png" src="assets/apiexception-indexApiExceptionLog.png" /></p>
+<h4 id="-uncaught-exception-api-response">- Uncaught Exception API Response?<a class="headerlink" href="#-uncaught-exception-api-response" title="Permanent link">&para;</a></h4>
+<p>What if you forget to handle an exception such as in the <a href="#see-it-in-action"><strong>example</strong></a> above?</p>
+<ul>
+<li>When the <code>user_id</code> is <code>3</code>, the program automatically catches the <code>ZeroDivisionError</code> and returns a standard error response, logging it in a <strong>clean structure</strong> as shown below:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;FAIL&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Something went wrong.&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;error_code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ISE-500&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;An unexpected error occurred. Please try again later.&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><img alt="apiexception-indexApiExceptionLog.png" src="assets/apiexception-indexZeroDivisionLog.png" /></p>
+<h3 id="clear-consistent-responses">💡 Clear &amp; Consistent Responses<a class="headerlink" href="#clear-consistent-responses" title="Permanent link">&para;</a></h3>
+<ul>
+<li>🟢 <strong>200</strong>: Success responses are always documented with your data model.</li>
+<li>🔑 <strong>401 / 403</strong>: Custom error codes &amp; messages show exactly what clients should expect.</li>
+<li>🔍 No guesswork — frontend, testers, and API consumers always know what to expect for both <strong>success</strong> and <strong>error</strong> cases.</li>
+<li>💪 Even <strong>unexpected server-side issues</strong> (DB errors, unhandled exceptions, third-party failures) return a <strong>consistent JSON</strong> that follows your <code>ResponseModel</code>.</li>
+<li>❌ No more raw HTML <code>500</code> pages! Every error is logged automatically for an instant audit trail.</li>
+</ul>
+<hr />
+<h3 id="frontend-integration-advantages">💡 Frontend Integration Advantages<a class="headerlink" href="#frontend-integration-advantages" title="Permanent link">&para;</a></h3>
+<p>In most APIs, the frontend must:</p>
+<ol>
+<li>Check the HTTP status code  </li>
+<li>Parse JSON  </li>
+<li>Extract data or error details  </li>
+</ol>
+<p>With <strong>APIException</strong>, every response follows the same schema: </p>
+<p>→ Simply parse JSON <strong>once</strong> and check the <code>status</code> field (<code>SUCCESS</code> or <code>ERROR</code>).<br />
+  → If <code>ERROR</code>, read <code>error_code</code> and <code>message</code> (or/and <code>description</code>) for full details. Since even the unexpected errors are formatted consistently, the frontend can handle them uniformly.</p>
+<table>
+<thead>
+<tr>
+<th>Flow</th>
+<th>Steps</th>
+<th>What the frontend checks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Typical REST</td>
+<td>1) Check HTTP status → 2) Parse JSON → 3) Branch for data/error</td>
+<td>Status code, JSON shape, error payload variations</td>
+</tr>
+<tr>
+<td><strong>With APIException</strong></td>
+<td><strong>1) Parse JSON once</strong></td>
+<td>Read <code>status</code> → <code>SUCCESS</code> or <code>ERROR</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Client pattern:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Example: fetch wrapper / interceptor</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span><span class="w"> </span><span class="nx">opts</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">body</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span><span class="w">            </span><span class="c1">// same shape for 2xx/4xx/5xx</span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">body</span><span class="p">.</span><span class="nx">status</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;SUCCESS&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">body</span><span class="p">.</span><span class="nx">data</span><span class="p">;</span><span class="w">                       </span><span class="c1">// ✅ consume data directly</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">throw</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">code</span><span class="o">:</span><span class="w"> </span><span class="kt">body.error_code</span><span class="p">,</span><span class="w"> </span><span class="nx">message</span><span class="o">:</span><span class="w"> </span><span class="kt">body.description</span><span class="w"> </span><span class="p">};</span><span class="w"> </span><span class="c1">// ❌ unified error</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr />
+<h3 id="backend-maintainability-advantages">💡 Backend Maintainability Advantages<a class="headerlink" href="#backend-maintainability-advantages" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Define each <code>CustomExceptionCode</code> <strong>once</strong> with <code>error_code</code>, <code>message</code>, and <code>description</code>.</li>
+<li>Logs become cleaner and easier to search.<br />
+  → If another team reports an <code>error_code</code>, you can instantly locate it in logs.  </li>
+<li>Keeps backend code organized and avoids scattering error definitions everywhere.</li>
+<li>Share the <code>error_code</code> list with frontend teams for <strong>zero-guesswork</strong> integrations.</li>
+</ul>
+<hr />
+<h3 id="logging-debugging-flexibility">🔍 Logging &amp; Debugging Flexibility<a class="headerlink" href="#logging-debugging-flexibility" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Toggle tracebacks on/off depending on the environment.</li>
+<li>Fully controllable logging: import, set log levels, or disable entirely.</li>
+<li><strong>RFC 7808</strong> support out of the box for teams that require standard-compliant error formats.</li>
+</ul>
+<hr />
+<p>Reduces boilerplate and speeds up integration.
+This is how <strong>APIException</strong> helps you build trustable, professional APIs from day one!</p>
 <h2 id="who-should-use-this">👥 Who should use this?<a class="headerlink" href="#who-should-use-this" title="Permanent link">&para;</a></h2>
 <p>✅ FastAPI developers who want consistent success &amp; error responses.<br />
 ✅ Teams building multi-client or external APIs.<br />
@@ -998,11 +1275,93 @@ When your API serves multiple frontends or external clients, having different JS
 ✅ Adds an optional <strong>global fallback</strong> for unexpected crashes — all while keeping FastAPI’s speed.</p>
 <hr />
 <h2 id="core-principles">✨ Core Principles<a class="headerlink" href="#core-principles" title="Permanent link">&para;</a></h2>
-<p>•   🔒 Consistency: Success and error responses always follow the same format.</p>
-<p>•   📊 Clear Docs: OpenAPI/Swagger stays clean and human-friendly.</p>
-<p>•   🪶 Zero Boilerplate: Register once, use everywhere.</p>
-<p>•   ⚡ Extensible: Fully customizable error codes &amp; handlers.</p>
+<table>
+<thead>
+<tr>
+<th>Principle</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>🔒 <strong>Consistency</strong></td>
+<td>Success and error responses share the exact same structure, improving reliability and DX.</td>
+</tr>
+<tr>
+<td>📊 <strong>Clear Docs</strong></td>
+<td>OpenAPI/Swagger remains clean, accurate, and human-friendly.</td>
+</tr>
+<tr>
+<td>🪶 <strong>Zero Boilerplate</strong></td>
+<td>Configure once, then use anywhere with minimal repetitive code.</td>
+</tr>
+<tr>
+<td>⚡ <strong>Extensible</strong></td>
+<td>Fully customizable error codes, handlers, and response formats for any project need.</td>
+</tr>
+</tbody>
+</table>
 <hr />
+<h2 id="benchmark">📊 Benchmark<a class="headerlink" href="#benchmark" title="Permanent link">&para;</a></h2>
+<p>We benchmarked <strong>apiexception's</strong> <code>APIException</code> against <strong>FastAPI's</strong> built-in <code>HTTPException</code> using <strong>Locust</strong> with <strong>200</strong> concurrent users over <strong>2 minutes</strong>.<br />
+Both apps received the same traffic mix (≈75% <code>/ok</code>, ≈25% <code>/error</code>).</p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>HTTPException (Control App)</th>
+<th>APIException (Test App)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Avg Latency</td>
+<td><strong>2.00 ms</strong></td>
+<td>2.72 ms</td>
+</tr>
+<tr>
+<td>P95 Latency</td>
+<td>5 ms</td>
+<td>6 ms</td>
+</tr>
+<tr>
+<td>P99 Latency</td>
+<td><strong>9 ms</strong></td>
+<td>19 ms</td>
+</tr>
+<tr>
+<td>Max Latency</td>
+<td><strong>44 ms</strong></td>
+<td>96 ms</td>
+</tr>
+<tr>
+<td>Requests per Second (RPS)</td>
+<td>~608.88</td>
+<td>~608.69</td>
+</tr>
+<tr>
+<td>Failure Rate (<code>/error</code>)</td>
+<td>100% (intentional)</td>
+<td>100% (intentional)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Analysis</strong><br />
+- Both implementations achieved almost identical throughput (~609 RPS).<br />
+- In this test, APIException’s <strong>average latency was only +0.72 ms</strong> higher than HTTPException (2.42 ms vs 2.00 ms).<br />
+- <strong>The P95 latencies</strong> were nearly identical at 5 ms and 6 ms, while <strong>the P99</strong> and <strong>maximum latencies</strong> for APIException were slightly higher but still well within acceptable performance thresholds for APIs.</p>
+<blockquote>
+<p><code>Important Notice:</code> <code>APIException</code> automatically logs exceptions, while FastAPI’s built-in <code>HTTPException</code> does not log them by default.
+Considering the extra <strong>logging feature</strong>, these performance results are <strong>very strong</strong>, showing that APIException delivers standardized error responses, cleaner exception handling, and logging capabilities <strong>without sacrificing scalability</strong>.</p>
+</blockquote>
+<figure style="margin: 0; text-align: center;">
+  <img src="assets/APIException-vs-HTTPException–Latency-Comparison.png" alt="APIException vs HTTPException – Latency Comparison" style="display: block; margin: 0 auto;">
+  <figcaption style="margin-top: 4px; font-style: italic; font-size: 0.9em;">
+    HTTPException vs APIException – Latency Comparison
+  </figcaption>
+</figure>
+
+<p>Benchmark scripts and raw Locust reports are available in the <a href="https://github.com/akutayural/APIException/tree/main/benchmark">benchmark</a> directory.</p>
 <h2 id="next-steps">📚 Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
 <p>Ready to integrate?
 Check out:

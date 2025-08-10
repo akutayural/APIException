@@ -15,13 +15,13 @@
         <link rel="canonical" href="https://ahmetkutayural.dev/reference/api/">
       
       
-        <link rel="prev" href="../../advanced/logging/">
+        <link rel="prev" href="../../examples/">
       
       
         <link rel="next" href="../../changelog/">
       
       
-      <link rel="icon" href="../../assets/favicon.ico">
+      <link rel="icon" href="../../favicon/favicon.ico">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.15">
     
     
@@ -287,7 +287,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../usage/response_model/" class="md-tabs__link">
+        <a href="../../usage/register_exception_handlers/" class="md-tabs__link">
           
   
   
@@ -316,6 +316,25 @@
         </a>
       </li>
     
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../examples/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  📂 Examples
+
+      </a>
+    </li>
   
 
       
@@ -521,6 +540,29 @@
   
   
     <li class="md-nav__item">
+      <a href="../../usage/register_exception_handlers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    register_exception_handlers
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../usage/response_model/" class="md-nav__link">
         
   
@@ -679,9 +721,54 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/rfc7807/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    RFC 7807 Integration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    📂 Examples
+    
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -885,7 +972,7 @@
 <ul>
 <li>✅ Where to import:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">APIException</span><span class="w"> </span><span class="kn">import</span> <span class="n">ResponseModel</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">api_exception</span><span class="w"> </span><span class="kn">import</span> <span class="n">ResponseModel</span>
 </code></pre></div>
 <ul>
 <li>
@@ -905,7 +992,7 @@
 <ul>
 <li>✅ Where to import:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">APIException</span><span class="w"> </span><span class="kn">import</span> <span class="n">APIException</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">api_exception</span><span class="w"> </span><span class="kn">import</span> <span class="n">APIException</span>
 </code></pre></div>
 <ul>
 <li>
@@ -921,7 +1008,7 @@
 <ul>
 <li>✅ Where to import:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">APIException</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseExceptionCode</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">api_exception</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseExceptionCode</span>
 </code></pre></div>
 <hr />
 <h3 id="apiresponse">APIResponse<a class="headerlink" href="#apiresponse" title="Permanent link">&para;</a></h3>
@@ -930,7 +1017,7 @@ A helper to document your Swagger/OpenAPI responses easily.</p>
 <ul>
 <li>
 <p>✅ Where to import:
-<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">APIException</span><span class="w"> </span><span class="kn">import</span> <span class="n">APIResponse</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">api_exception</span><span class="w"> </span><span class="kn">import</span> <span class="n">APIResponse</span>
 </code></pre></div></p>
 </li>
 <li>
@@ -944,22 +1031,14 @@ A helper to document your Swagger/OpenAPI responses easily.</p>
 <p><strong>📌 What it is:</strong></p>
 <p>Sets up global handlers to catch APIException and unexpected errors.</p>
 <ul>
-<li>
-<p>✅ Where to import:
-<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">APIException</span><span class="w"> </span><span class="kn">import</span> <span class="n">register_exception_handlers</span>
-</code></pre></div></p>
-</li>
-<li>
-<p>✅ Key Options:</p>
-<p>•   <code>use_response_model</code>: bool (default True) |
-Return responses using <code>ResponseModel</code>.</p>
-<p>•   <code>use_fallback_middleware</code>: bool (default True) |
-Catch unhandled exceptions and return a consistent fallback.</p>
-</li>
+<li>✅ Where to import:
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">api_exception</span><span class="w"> </span><span class="kn">import</span> <span class="n">register_exception_handlers</span>
+</code></pre></div></li>
 </ul>
+<p>It's detailed in the <a href="../../usage/register_exception_handlers/">Register Exception Handlers</a> section.</p>
 <h2 id="example">⚡ Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h2>
 <p>Here’s how a typical setup might look:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">APIException</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">api_exception</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
     <span class="n">APIException</span><span class="p">,</span>
     <span class="n">BaseExceptionCode</span><span class="p">,</span>
     <span class="n">ResponseModel</span><span class="p">,</span>

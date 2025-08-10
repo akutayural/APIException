@@ -18,10 +18,10 @@
         <link rel="prev" href="../../installation/">
       
       
-        <link rel="next" href="../response_model/">
+        <link rel="next" href="../register_exception_handlers/">
       
       
-      <link rel="icon" href="../../assets/favicon.ico">
+      <link rel="icon" href="../../favicon/favicon.ico">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.15">
     
     
@@ -289,7 +289,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../response_model/" class="md-tabs__link">
+        <a href="../register_exception_handlers/" class="md-tabs__link">
           
   
   
@@ -318,6 +318,25 @@
         </a>
       </li>
     
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../examples/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  📂 Examples
+
+      </a>
+    </li>
   
 
       
@@ -599,6 +618,29 @@
   
   
     <li class="md-nav__item">
+      <a href="../register_exception_handlers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    register_exception_handlers
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../response_model/" class="md-nav__link">
         
   
@@ -757,9 +799,54 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/rfc7807/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    RFC 7807 Integration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    📂 Examples
+    
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -870,8 +957,6 @@ Your API now returns consistent success &amp; error responses, and unexpected se
 <span class="c1"># Define your custom exception codes extending BaseExceptionCode</span>
 <span class="k">class</span><span class="w"> </span><span class="nc">CustomExceptionCode</span><span class="p">(</span><span class="n">BaseExceptionCode</span><span class="p">):</span>
     <span class="n">USER_NOT_FOUND</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;USR-404&quot;</span><span class="p">,</span> <span class="s2">&quot;User not found.&quot;</span><span class="p">,</span> <span class="s2">&quot;The user ID does not exist.&quot;</span><span class="p">)</span>
-    <span class="n">INVALID_API_KEY</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;API-401&quot;</span><span class="p">,</span> <span class="s2">&quot;Invalid API key.&quot;</span><span class="p">,</span> <span class="s2">&quot;Provide a valid API key.&quot;</span><span class="p">)</span>
-    <span class="n">PERMISSION_DENIED</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;PERM-403&quot;</span><span class="p">,</span> <span class="s2">&quot;Permission denied.&quot;</span><span class="p">,</span> <span class="s2">&quot;Access to this resource is forbidden.&quot;</span><span class="p">)</span>
 
 
 <span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/user/</span><span class="si">{user_id}</span><span class="s2">&quot;</span><span class="p">,</span>
@@ -890,8 +975,11 @@ Your API now returns consistent success &amp; error responses, and unexpected se
         <span class="n">description</span><span class="o">=</span><span class="s2">&quot;User found and returned.&quot;</span>
     <span class="p">)</span>
 </code></pre></div>
-The below gif demonstrates what actually the example code does.</p>
-<p><img alt="Consistent Swagger Responses" src="../_user_%7Buser_id%7D-quick.gif" /></p>
+The below video demonstrates what actually the example code does.</p>
+<video autoplay loop muted playsinline width="900">
+  <source src="../apiexception-indexBasicUsage.mp4" type="video/mp4">
+</video>
+
 <p><code>Swagger UI</code> will be well structured. </p>
 <h2 id="next">📚 Next<a class="headerlink" href="#next" title="Permanent link">&para;</a></h2>
 <p>✔️ Want to learn how to customize your responses?<br />

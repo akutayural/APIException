@@ -21,7 +21,7 @@
         <link rel="next" href="../fallback/">
       
       
-      <link rel="icon" href="../../assets/favicon.ico">
+      <link rel="icon" href="../../favicon/favicon.ico">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.15">
     
     
@@ -289,7 +289,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../response_model/" class="md-tabs__link">
+        <a href="../register_exception_handlers/" class="md-tabs__link">
           
   
   
@@ -318,6 +318,25 @@
         </a>
       </li>
     
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../examples/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  📂 Examples
+
+      </a>
+    </li>
   
 
       
@@ -516,6 +535,29 @@
             🧩 Usage
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../register_exception_handlers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    register_exception_handlers
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -784,9 +826,54 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/rfc7807/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    RFC 7807 Integration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    📂 Examples
+    
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -884,14 +971,14 @@
 <p><div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">APIException</span><span class="w"> </span><span class="kn">import</span> <span class="n">APIException</span>
 
 <span class="k">raise</span> <span class="n">APIException</span><span class="p">(</span>
-    <span class="n">error_code</span><span class="o">=</span><span class="n">CustomExceptionCode</span><span class="o">.</span><span class="n">PERMISSION_DENIED</span><span class="p">,</span>
+    <span class="n">error_code</span><span class="o">=</span><span class="n">CustomExceptionCode</span><span class="o">.</span><span class="n">USER_NOT_FOUND</span><span class="p">,</span>
     <span class="n">http_status_code</span><span class="o">=</span><span class="mi">403</span>
 <span class="p">)</span>
 </code></pre></div>
 In the above example, if we raise the <code>APIException()</code>, the response will look like the below image.
-<img alt="403-Permission-Denied" src="../img.png" /></p>
+<img alt="403-Permission-Denied" src="../../assets/img_2.png" /></p>
 <p>And it will automatically log the event. Log format can be seen in the below image.</p>
-<p><img alt="Log-Format" src="../img_1.png" /></p>
+<p><img alt="403-Permission-Denied" src="../../assets/apiexception-indexApiExceptionLog.png" /></p>
 <h3 id="how-it-looks-in-responses">🏷️ How It Looks in Responses<a class="headerlink" href="#how-it-looks-in-responses" title="Permanent link">&para;</a></h3>
 <p>✔️ Clear.</p>
 <p>✔️ Always consistent.</p>

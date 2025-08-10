@@ -18,10 +18,10 @@
         <link rel="prev" href="../swagger/">
       
       
-        <link rel="next" href="../../reference/api/">
+        <link rel="next" href="../rfc7807/">
       
       
-      <link rel="icon" href="../../assets/favicon.ico">
+      <link rel="icon" href="../../favicon/favicon.ico">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.15">
     
     
@@ -287,7 +287,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../usage/response_model/" class="md-tabs__link">
+        <a href="../../usage/register_exception_handlers/" class="md-tabs__link">
           
   
   
@@ -318,6 +318,25 @@
         </a>
       </li>
     
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../examples/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  📂 Examples
+
+      </a>
+    </li>
   
 
       
@@ -513,6 +532,29 @@
             🧩 Usage
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../usage/register_exception_handlers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    register_exception_handlers
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -760,9 +802,54 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rfc7807/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    RFC 7807 Integration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    📂 Examples
+    
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -838,10 +925,10 @@
 <h1 id="logging-debug">🪵 Logging &amp; Debug<a class="headerlink" href="#logging-debug" title="Permanent link">&para;</a></h1>
 <p>Good exception handling is only half the battle — <strong>logging</strong> is what keeps your team sane in production.</p>
 <p>With APIException, unexpected errors don’t just return a nice JSON response;</p>
-<p>they’re also <strong>automatically logged</strong> so you always have a clear trail of what went wrong.</p>
+<p>they’re also <strong>automatically logged</strong> so you always have a clear trail of what went wrong — and when needed, you can also <strong>log manually</strong> using the built-in logger for custom events or diagnostics.</p>
 <hr />
 <h2 id="how-it-works">✅ How It Works<a class="headerlink" href="#how-it-works" title="Permanent link">&para;</a></h2>
-<p>When you use:
+<p><strong>Auto-logging:</strong>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">APIException</span><span class="w"> </span><span class="kn">import</span> <span class="n">register_exception_handlers</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">fastapi</span><span class="w"> </span><span class="kn">import</span> <span class="n">FastAPI</span>
 
@@ -860,10 +947,23 @@ You get two powerful behaviors:</p>
 <p>2️⃣ <strong>Unhandled exceptions</strong> (like DB errors, 3rd-party failures) are caught by the fallback middleware and:
 - Return a consistent JSON error response (ISE-500 by default)
 - The full traceback to your console or logging system</p>
+<p><strong>Manual-Logging:</strong></p>
+<p>If you want to log your own events (not just exceptions), you can use the built-in logger:</p>
+<p><div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">api_exception.logger</span><span class="w"> </span><span class="kn">import</span> <span class="n">logger</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;This will be logged to both console and file&quot;</span><span class="p">)</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;This INFO log will also be written to the file&quot;</span>
+</code></pre></div>
+Also you can call add_file_handler to write log to file
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">api_exception.logger</span><span class="w"> </span><span class="kn">import</span> <span class="n">add_file_handler</span><span class="p">,</span><span class="n">logger</span>
+<span class="n">add_file_handler</span><span class="p">(</span><span class="s2">&quot;api_exception.log&quot;</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">)</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;This will be logged to both console and file&quot;</span><span class="p">)</span>
+</code></pre></div></p>
 <hr />
 <h2 id="example-output">⚙️ Example Output<a class="headerlink" href="#example-output" title="Permanent link">&para;</a></h2>
+<p>When an exception happened, you’ll see logs like:</p>
+<p><img alt="Log-Format" src="../exception_1.png" /></p>
 <p>When something unexpected happens, you’ll see logs like:</p>
-<p><img alt="Log-Format" src="../img_2.png" /></p>
+<p><img alt="Log-Unhandled-Format" src="../exception_2.png" /></p>
 <hr />
 <h2 id="tips">⚡ Tips<a class="headerlink" href="#tips" title="Permanent link">&para;</a></h2>
 <p>✅ Use FastAPI’s native logging module to pipe logs to your file, console, or external log aggregator (ELK, CloudWatch, etc.).</p>

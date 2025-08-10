@@ -19,7 +19,7 @@
       
       
       
-      <link rel="icon" href="../assets/favicon.ico">
+      <link rel="icon" href="../favicon/favicon.ico">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.15">
     
     
@@ -285,7 +285,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../usage/response_model/" class="md-tabs__link">
+        <a href="../usage/register_exception_handlers/" class="md-tabs__link">
           
   
   
@@ -314,6 +314,25 @@
         </a>
       </li>
     
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../examples/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  📂 Examples
+
+      </a>
+    </li>
   
 
       
@@ -519,6 +538,29 @@
   
   
     <li class="md-nav__item">
+      <a href="../usage/register_exception_handlers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    register_exception_handlers
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../usage/response_model/" class="md-nav__link">
         
   
@@ -677,9 +719,54 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../advanced/rfc7807/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    RFC 7807 Integration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    📂 Examples
+    
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -761,6 +848,24 @@
       Table of contents
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#v0117-2025-08-11" class="md-nav__link">
+    <span class="md-ellipsis">
+      [v0.1.17] - 2025-08-11
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v0116-2025-07-22" class="md-nav__link">
+    <span class="md-ellipsis">
+      [v0.1.16] - 2025-07-22
+    </span>
+  </a>
+  
+</li>
       
         <li class="md-nav__item">
   <a href="#v0115-2025-07-22" class="md-nav__link">
@@ -851,8 +956,59 @@
 <h1 id="changelog">📝 Changelog<a class="headerlink" href="#changelog" title="Permanent link">&para;</a></h1>
 <p>All notable changes to APIException will be documented here.
 This project uses <em>Semantic Versioning</em>.</p>
+<h2 id="v0117-2025-08-11">[v0.1.17] - 2025-08-11<a class="headerlink" href="#v0117-2025-08-11" title="Permanent link">&para;</a></h2>
+<p>✅ <strong>Initial stable version</strong></p>
+<ul>
+<li>
+<p><code>RFC 7807</code> standard support for consistent error responses (<code>application/problem+json</code>)</p>
+</li>
+<li>
+<p>OpenAPI (Swagger) schema consistency: nullable fields are now explicitly shown for better compatibility</p>
+</li>
+<li>
+<p><code>Poetry</code> support has been added for dependency management</p>
+</li>
+<li>
+<p><code>uv</code> support has been added.</p>
+</li>
+<li>
+<p>extra logger message param has been added to <code>APIException</code> for more detailed logging</p>
+</li>
+<li>
+<p><code>log_traceback</code> and <code>log_traceback_unhandled_exception</code> parameters have been added to <code>register_exception_handlers()</code> for more control over logging behavior</p>
+</li>
+<li>
+<p><code>log_exception</code> parameter has been added to <code>APIException</code> for more control over logging behavior</p>
+</li>
+<li>
+<p><code>log_message</code> parameter has been added to <code>APIException</code> for more control over logging behavior</p>
+</li>
+<li>
+<p>Logging now uses <code>add_file_handler()</code> to write logs to a file</p>
+</li>
+<li>
+<p>Logging improvements: now includes exception arguments in logs for better debugging</p>
+</li>
+<li>
+<p>Documentation has been updated.    </p>
+</li>
+<li>
+<p>Readme.md has been updated. </p>
+</li>
+</ul>
+<h2 id="v0116-2025-07-22">[v0.1.16] - 2025-07-22<a class="headerlink" href="#v0116-2025-07-22" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p>setup.py has been updated.</p>
+</li>
+<li>
+<p>Documentation has been updated. </p>
+</li>
+<li>
+<p>Readme.md has been updated. </p>
+</li>
+</ul>
 <h2 id="v0115-2025-07-22">[v0.1.15] - 2025-07-22<a class="headerlink" href="#v0115-2025-07-22" title="Permanent link">&para;</a></h2>
-<p>✅ Initial stable release!</p>
 <ul>
 <li>
 <p>setup.py has been updated.</p>
