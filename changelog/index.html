@@ -850,6 +850,30 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#0121-2025-08-18" class="md-nav__link">
+    <span class="md-ellipsis">
+      [0.1.21] - 2025-08-18
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="[0.1.21] - 2025-08-18">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fixed" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fixed
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#0120-2025-08-18" class="md-nav__link">
     <span class="md-ellipsis">
       [0.1.20] - 2025-08-18
@@ -869,7 +893,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#fixed" class="md-nav__link">
+  <a href="#fixed_1" class="md-nav__link">
     <span class="md-ellipsis">
       Fixed
     </span>
@@ -911,7 +935,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#fixed_1" class="md-nav__link">
+  <a href="#fixed_2" class="md-nav__link">
     <span class="md-ellipsis">
       Fixed
     </span>
@@ -953,7 +977,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#fixed_2" class="md-nav__link">
+  <a href="#fixed_3" class="md-nav__link">
     <span class="md-ellipsis">
       Fixed
     </span>
@@ -1073,15 +1097,21 @@
 <h1 id="changelog">📝 Changelog<a class="headerlink" href="#changelog" title="Permanent link">&para;</a></h1>
 <p>All notable changes to APIException will be documented here.
 This project uses <em>Semantic Versioning</em>.</p>
-<h2 id="0120-2025-08-18">[0.1.20] - 2025-08-18<a class="headerlink" href="#0120-2025-08-18" title="Permanent link">&para;</a></h2>
+<h2 id="0121-2025-08-18">[0.1.21] - 2025-08-18<a class="headerlink" href="#0121-2025-08-18" title="Permanent link">&para;</a></h2>
 <p>✅ Stable release!
 ✅ <strong>Initial stable and suggested version</strong></p>
+<h3 id="fixed">Fixed<a class="headerlink" href="#fixed" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Added missing <code>import traceback</code> in <code>__init__.py</code>.<br />
+  This resolves a <code>NameError</code> when using <code>register_exception_handlers</code> with traceback logging enabled.</li>
+</ul>
+<h2 id="0120-2025-08-18">[0.1.20] - 2025-08-18<a class="headerlink" href="#0120-2025-08-18" title="Permanent link">&para;</a></h2>
 <h4 id="changed">Changed<a class="headerlink" href="#changed" title="Permanent link">&para;</a></h4>
 <ul>
 <li>Refactored <code>__init__.py</code> to use relative imports (<code>from .module import ...</code>) for cleaner packaging and better IDE compatibility.</li>
 <li>Unified and simplified <code>__all__</code> so developers can import everything directly from <code>api_exception</code> (e.g. <code>from api_exception import ResponseModel, APIException</code>).</li>
 </ul>
-<h4 id="fixed">Fixed<a class="headerlink" href="#fixed" title="Permanent link">&para;</a></h4>
+<h4 id="fixed_1">Fixed<a class="headerlink" href="#fixed_1" title="Permanent link">&para;</a></h4>
 <ul>
 <li>Resolved IDE red import warnings when using the library in external projects.</li>
 <li>Improved top-level import resolution and consistency across modules.</li>
@@ -1096,7 +1126,7 @@ This project uses <em>Semantic Versioning</em>.</p>
 <ul>
 <li>Internal imports refactored, simplified folder structure for <code>enums.py</code>, <code>response_model.py</code>, <code>rfc7807_model.py</code>.</li>
 </ul>
-<h4 id="fixed_1">Fixed<a class="headerlink" href="#fixed_1" title="Permanent link">&para;</a></h4>
+<h4 id="fixed_2">Fixed<a class="headerlink" href="#fixed_2" title="Permanent link">&para;</a></h4>
 <ul>
 <li>Example and README imports updated to use new unified style.</li>
 </ul>
@@ -1113,7 +1143,7 @@ This project uses <em>Semantic Versioning</em>.</p>
 <li>Docstrings and examples updated (<code>use_response_model</code> → <code>response_format</code>).</li>
 <li>Unified error logging (no logs when <code>log=False</code>).</li>
 </ul>
-<h3 id="fixed_2">Fixed<a class="headerlink" href="#fixed_2" title="Permanent link">&para;</a></h3>
+<h3 id="fixed_3">Fixed<a class="headerlink" href="#fixed_3" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Fallback middleware now returns HTTP 500 instead of 422 for unexpected errors.</li>
 <li>Traceback scope bug fixed in handlers.</li>
