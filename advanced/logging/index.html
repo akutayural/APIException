@@ -949,12 +949,12 @@ You get two powerful behaviors:</p>
 - The full traceback to your console or logging system</p>
 <p><strong>Manual-Logging:</strong></p>
 <p>If you want to log your own events (not just exceptions), you can use the built-in logger:</p>
-<p><div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">api_exception.logger</span><span class="w"> </span><span class="kn">import</span> <span class="n">logger</span>
+<p><div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">api_exception</span><span class="w"> </span><span class="kn">import</span> <span class="n">logger</span>
 <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;This will be logged to both console and file&quot;</span><span class="p">)</span>
 <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;This INFO log will also be written to the file&quot;</span>
 </code></pre></div>
 Also you can call add_file_handler to write log to file
-<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">api_exception.logger</span><span class="w"> </span><span class="kn">import</span> <span class="n">add_file_handler</span><span class="p">,</span><span class="n">logger</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">api_exception</span><span class="w"> </span><span class="kn">import</span> <span class="n">add_file_handler</span><span class="p">,</span><span class="n">logger</span>
 <span class="n">add_file_handler</span><span class="p">(</span><span class="s2">&quot;api_exception.log&quot;</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">)</span>
 <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;This will be logged to both console and file&quot;</span><span class="p">)</span>
 </code></pre></div></p>

@@ -951,8 +951,7 @@
 <hr />
 <h3 id="enable-rfc7807-globally">✅ Enable RFC7807 Globally<a class="headerlink" href="#enable-rfc7807-globally" title="Permanent link">&para;</a></h3>
 <p>To enable RFC 7807 response formatting across your application:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">api_exception</span><span class="w"> </span><span class="kn">import</span> <span class="n">register_exception_handlers</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">api_exception.enums</span><span class="w"> </span><span class="kn">import</span> <span class="n">ResponseFormat</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">api_exception</span><span class="w"> </span><span class="kn">import</span> <span class="n">register_exception_handlers</span><span class="p">,</span> <span class="n">ResponseFormat</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">fastapi</span><span class="w"> </span><span class="kn">import</span> <span class="n">FastAPI</span>
 
 <span class="n">app</span> <span class="o">=</span> <span class="n">FastAPI</span><span class="p">()</span>
@@ -964,8 +963,8 @@
 <p>This will return error responses with the application/problem+json content type, formatted according to the RFC 7807 spec.</p>
 <h3 id="rfc7807-usage-example">🧪 RFC7807 Usage Example<a class="headerlink" href="#rfc7807-usage-example" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">api_exception</span><span class="w"> </span><span class="kn">import</span> <span class="n">APIException</span><span class="p">,</span> <span class="n">APIResponse</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">api_exception.enums</span><span class="w"> </span><span class="kn">import</span> <span class="n">ResponseFormat</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">api_exception.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">ResponseModel</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">api_exception</span><span class="w"> </span><span class="kn">import</span> <span class="n">ResponseFormat</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">api_exception</span><span class="w"> </span><span class="kn">import</span> <span class="n">ResponseModel</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">fastapi</span><span class="w"> </span><span class="kn">import</span> <span class="n">FastAPI</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">.schemas</span><span class="w"> </span><span class="kn">import</span> <span class="n">UserResponse</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">.exceptions</span><span class="w"> </span><span class="kn">import</span> <span class="n">CustomExceptionCode</span>

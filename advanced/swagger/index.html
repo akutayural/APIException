@@ -981,8 +981,8 @@ In <strong>Swagger UI</strong>, your custom error cases will show up clearly alo
 <p><img alt="APIResponse.custom()" src="../img_3.png" /></p>
 <h2 id="example-apiresponserfc7807">⚙️ Example: <code>APIResponse.rfc7807()</code><a class="headerlink" href="#example-apiresponserfc7807" title="Permanent link">&para;</a></h2>
 <p>The exception messages will be formatted as RFC 7807.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">schemas.response_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">ResponseModel</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">api_exception</span><span class="w"> </span><span class="kn">import</span> <span class="n">APIResponse</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">api_exception</span><span class="w"> </span><span class="kn">import</span> <span class="n">ResponseModel</span><span class="p">,</span> <span class="n">APIResponse</span>
+
 
 <span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
     <span class="s2">&quot;/rfc7807&quot;</span><span class="p">,</span>
