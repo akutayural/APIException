@@ -6,8 +6,8 @@ from api_exception import (
 )
 from pydantic import BaseModel, Field
 
-from api_exception.enums import ResponseFormat
-from api_exception.response_model import ResponseModel
+from api_exception import ResponseFormat
+from api_exception import ResponseModel
 
 app = FastAPI()
 register_exception_handlers(app, response_format=ResponseFormat.RFC7807)

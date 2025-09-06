@@ -23,10 +23,12 @@ This documents your success response plus the default errors (400, 401, 403, 404
 
 ```python
 from api_exception import APIResponse, ResponseModel
+
+
 @app.get("/user",
-    response_model=ResponseModel[UserResponse],
-    responses=APIResponse.default()
-)
+         response_model=ResponseModel[UserResponse],
+         responses=APIResponse.default()
+         )
 ```
 
 When you open **Swagger UI**, it will show all the possible success and error cases:
@@ -43,13 +45,15 @@ Use `APIResponse.custom()` to add your own specific error codes for each endpoin
 
 ```python
 from api_exception import ResponseModel, APIResponse
+
+
 @app.get("/user",
-    response_model=ResponseModel[UserResponse],
-    responses=APIResponse.custom(
-        (401, CustomExceptionCode.INVALID_API_KEY),
-        (403, CustomExceptionCode.PERMISSION_DENIED)
-    )
-)
+         response_model=ResponseModel[UserResponse],
+         responses=APIResponse.custom(
+             (401, CustomExceptionCode.INVALID_API_KEY),
+             (403, CustomExceptionCode.PERMISSION_DENIED)
+         )
+         )
 ```
 In **Swagger UI**, your custom error cases will show up clearly alongside your success model:
 

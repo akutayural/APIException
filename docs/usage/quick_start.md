@@ -26,11 +26,11 @@ Your API now returns consistent success & error responses, and unexpected server
 ## ✅ Example Endpoint
 
 Here’s a minimal example:
+
 ```python
 from fastapi import FastAPI, Path
 from pydantic import BaseModel, Field
 from api_exception import APIException, register_exception_handlers, ResponseModel, APIResponse, BaseExceptionCode
-
 
 app = FastAPI()
 
@@ -38,21 +38,22 @@ app = FastAPI()
 # error handling and response structure
 register_exception_handlers(app=app)
 
+
 # Create the validation model for your response
 class UserResponse(BaseModel):
     id: int = Field(..., example=1, description="Unique identifier of the user")
     username: str = Field(..., example="Micheal Alice", description="Username or full name of the user")
 
-    
+
 # Define your custom exception codes extending BaseExceptionCode
 class CustomExceptionCode(BaseExceptionCode):
     USER_NOT_FOUND = ("USR-404", "User not found.", "The user ID does not exist.")
 
 
 @app.get("/user/{user_id}",
-    response_model=ResponseModel[UserResponse],
-    responses=APIResponse.default()
-)
+         response_model=ResponseModel[UserResponse],
+         responses=APIResponse.default()
+         )
 async def user(user_id: int = Path()):
     if user_id == 1:
         raise APIException(

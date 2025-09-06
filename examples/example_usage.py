@@ -1,4 +1,5 @@
-from api_exception import APIException, ExceptionCode, ExceptionStatus
+from api_exception import APIException, ExceptionCode
+
 
 def basic_example():
     try:

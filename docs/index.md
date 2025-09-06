@@ -36,9 +36,11 @@ pip show apiexception
 
 Now that you have the package installed, let’s get started with setting up your FastAPI app.
 Just import the `register_exception_handlers` function from `apiexception` and call it with your FastAPI app instance to set up global exception handling:
+
 ```python
 from api_exception import register_exception_handlers
 from fastapi import FastAPI
+
 app = FastAPI()
 register_exception_handlers(app=app)
 ```
