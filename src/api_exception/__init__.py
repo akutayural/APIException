@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import logging
 import traceback
+from importlib.metadata import version
 from typing import Callable, Tuple, Optional, Dict, Any, Iterable, Union
 from typing import Literal
 
@@ -11,17 +12,18 @@ from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 from starlette.status import HTTP_422_UNPROCESSABLE_ENTITY
 
-from .rfc7807_model import RFC7807ResponseModel
 from .enums import ExceptionCode, ExceptionStatus, BaseExceptionCode, ResponseFormat
-from .response_model import ResponseModel
-from .logger import logger, add_file_handler, log_with_meta
 from .exception import (
     APIException,
     set_default_http_codes,
     DEFAULT_HTTP_CODES,
 )
+from .logger import logger, add_file_handler, log_with_meta
+from .response_model import ResponseModel
 from .response_utils import APIResponse
+from .rfc7807_model import RFC7807ResponseModel
 
+__version__ = version("apiexception")
 __all__ = [
     "DEFAULT_HTTP_CODES",
     "APIException",
@@ -36,6 +38,7 @@ __all__ = [
     "logger",
     "add_file_handler",
     "APIResponse",
+    "__version__",
 ]
 
 LogLevelLiteral = Literal[10, 20, 30, 40, 50]

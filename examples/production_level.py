@@ -15,8 +15,6 @@ from api_exception import (
     logger,
     add_file_handler,
     ResponseFormat,
-    DEFAULT_HTTP_CODES,
-    set_default_http_codes,
 )
 
 

@@ -8,6 +8,7 @@ they’re also **automatically logged** in a clean, structured way.
 ## ✅ How It Works
 
 **Auto-logging:**
+
 ```python
 from api_exception import register_exception_handlers
 from fastapi import FastAPI
@@ -48,6 +49,7 @@ Here’s a quick guide:
 
 ```python
 from api_exception import logger
+
 logger.setLevel("DEBUG")
 ```
 
@@ -88,6 +90,7 @@ from fastapi import FastAPI, Request
 
 app = FastAPI()
 
+
 def my_extra_fields(request: Request, exc: Exception):
     def mask(value: str, visible: int = 4) -> str:
         """Mask sensitive data (keep last `visible` chars)."""
@@ -105,6 +108,7 @@ def my_extra_fields(request: Request, exc: Exception):
         "authorization": mask(request.headers.get("authorization", "")),
         "api_key": mask(request.query_params.get("api_key", "")),
     }
+
 
 register_exception_handlers(app, extra_log_fields=my_extra_fields)
 ```
@@ -138,10 +142,10 @@ authorization=********abcd api_key=*****f9d2
 ```python
 from api_exception import logger
 
-logger.debug("Debugging details: user_id=42, payload=...")  
-logger.info("Service started successfully on port 8000")  
-logger.warning("Slow query detected, taking longer than 2s")  
-logger.error("Failed to connect to Redis")  
+logger.debug("Debugging details: user_id=42, payload=...")
+logger.info("Service started successfully on port 8000")
+logger.warning("Slow query detected, taking longer than 2s")
+logger.error("Failed to connect to Redis")
 logger.critical("Database unreachable! Shutting down...")
 ```
 

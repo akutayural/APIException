@@ -23,8 +23,10 @@ Create your own class by extending `BaseExceptionCode` and declare your error co
 ```python
 from api_exception import BaseExceptionCode
 
+
 class AuthorisationExceptions(BaseExceptionCode):
     AUTH_FAILED = ("AUTH-100", "Authorisation failed.", "Unable to authorise, try again later.")
+
 
 class CustomExceptionCode(BaseExceptionCode):
     # Format: KEY = (code, message, description, rfc7807_type, rfc7807_instance)
@@ -42,10 +44,10 @@ from api_exception import APIException
 
 raise APIException(
     error_code=CustomExceptionCode.USER_NOT_FOUND,  # Required
-    http_status_code=403,                           # Optional
-    log_exception=True,                             # Optional
-    log_message=f"Extra Log Message!!",             # Optional
-    headers={"x-user-id": user_id}                  # Optional
+    http_status_code=403,  # Optional
+    log_exception=True,  # Optional
+    log_message=f"Extra Log Message!!",  # Optional
+    headers={"x-user-id": user_id}  # Optional
 )
 ```
 In the above example, if we raise the `APIException()`, the response will look like the below image.

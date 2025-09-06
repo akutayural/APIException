@@ -244,9 +244,11 @@ What if you forget to handle an exception such as in the **example** above?
 ```python
 from api_exception import APIException, ExceptionCode, register_exception_handlers
 from fastapi import FastAPI
+
 app = FastAPI()
 
 register_exception_handlers(app)
+
 
 @app.get("/login")
 async def login(username: str, password: str):
@@ -265,9 +267,11 @@ async def login(username: str, password: str):
 ```python
 from api_exception import ResponseModel, register_exception_handlers
 from fastapi import FastAPI
+
 app = FastAPI()
 
 register_exception_handlers(app)
+
 
 @app.get("/success")
 async def success():
@@ -290,6 +294,7 @@ Always extend BaseExceptionCode — don’t subclass ExceptionCode directly!
 
 ```python
 from api_exception import BaseExceptionCode
+
 
 class CustomExceptionCode(BaseExceptionCode):
     USER_NOT_FOUND = ("-404", "User not found.", "User does not exist.")
@@ -323,6 +328,7 @@ set_default_http_codes({
 ---
 
 ## 🌐 Multiple Apps Support
+
 ```python
 from fastapi import FastAPI
 from api_exception import register_exception_handlers
@@ -385,6 +391,7 @@ This example serves as a **one-stop reference** to see how `api_exception` can b
 import unittest
 from api_exception import APIException, ExceptionCode, ResponseModel
 
+
 class TestAPIException(unittest.TestCase):
     def test_api_exception(self):
         exc = APIException(error_code=ExceptionCode.AUTH_LOGIN_FAILED)
@@ -393,6 +400,7 @@ class TestAPIException(unittest.TestCase):
     def test_response_model(self):
         res = ResponseModel(data={"foo": "bar"})
         self.assertEqual(res.status.value, "SUCCESS")
+
 
 if __name__ == "__main__":
     unittest.main()

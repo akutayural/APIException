@@ -201,6 +201,7 @@ You can make the API echo request headers back in responses.
 
 ```python
 from api_exception import register_exception_handlers
+
 # Default set
 register_exception_handlers(app, response_headers=True)
 
@@ -264,13 +265,14 @@ from typing import Optional, Dict, Any
 from pydantic import BaseModel
 from api_exception import (
     APIException,
-    register_exception_handlers, 
+    register_exception_handlers,
     ResponseModel, ResponseFormat,
     BaseExceptionCode,
     APIResponse
 )
 
 app = FastAPI()
+
 
 def my_extra_fields(request: Request, exc: Optional[BaseException]) -> Dict[str, Any]:
     # Örn. özel header'ı maskeyle logla
@@ -281,6 +283,8 @@ def my_extra_fields(request: Request, exc: Optional[BaseException]) -> Dict[str,
         "has_exc": exc is not None,
         "exc_type": type(exc).__name__ if exc else None,
     }
+
+
 register_exception_handlers(app,
                             response_format=ResponseFormat.RESPONSE_MODEL,
                             log_traceback=True,

@@ -73,6 +73,7 @@ from api_exception import BaseExceptionCode
 A helper to document your Swagger/OpenAPI responses easily.
 
 - ✅ Where to import:
+
 ```python
 from api_exception import APIResponse
 ```
@@ -92,6 +93,7 @@ from api_exception import APIResponse
 Sets up global handlers to catch APIException and unexpected errors.
 
 - ✅ Where to import:
+
 ```python
 from api_exception import register_exception_handlers
 ```

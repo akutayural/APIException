@@ -21,8 +21,8 @@ def set_default_http_codes(new_map: dict):
 
     Example
     -------
-    >>> from api_exception.enums import ExceptionStatus
-    >>> from api_exception.exception import set_default_http_codes
+    >>> from api_exception import ExceptionStatus
+    >>> from api_exception import set_default_http_codes
     >>> set_default_http_codes({ExceptionStatus.WARNING: 422})
     """
     DEFAULT_HTTP_CODES.update(new_map)

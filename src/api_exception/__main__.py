@@ -1,8 +1,11 @@
 import click
 
+from api_exception import __version__
+
+
 @click.command()
 def main():
-    click.secho("✨ APIException current latest version: v0.1.11 ✨", fg="green")
+    click.secho(f"✨ APIException current latest version: v{__version__} ✨", fg="green")
     click.secho("📚 PyPI: https://pypi.org/project/APIException/", fg="blue")
     click.secho("💻 GitHub: https://github.com/akutayural/APIException", fg="cyan")
     click.secho("👤 Maintainer: Ahmet Kutay URAL", fg="yellow")
@@ -33,6 +36,7 @@ def main():
     click.echo("      return ResponseModel(data={'user_id': user_id, 'name': 'John Doe'})")
     click.echo()
     click.secho("Run your FastAPI app and enjoy consistent error handling! 🚀", fg="green")
+
 
 if __name__ == "__main__":
     main()

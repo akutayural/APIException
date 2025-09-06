@@ -50,11 +50,12 @@ from api_exception import (
 app = FastAPI()
 register_exception_handlers(app=app)
 
-
 '''
 Custom Exception Class that you can define in your code to make the backend responses look more standardized.
 Just extend the `BaseExceptionCode` and use it. 
 '''
+
+
 class CustomExceptionCode(BaseExceptionCode):
     INVALID_API_KEY = ("API-401", "Invalid API key.", "Provide a valid API key.")
 
