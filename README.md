@@ -166,7 +166,7 @@ The above code demonstrates how to handle exceptions in FastAPI using the `APIEx
 When you run your FastAPI app and open **Swagger UI** (`/docs`),  
 your endpoints will display **clean, predictable response schemas** like this below:
 
-![_user_{user_id}.gif](/assets/apiexception-indexBasicUsage-1.gif)
+![_user_{user_id}.gif](/docs/assets/apiexception-indexBasicUsage-1.gif)
 
 ---
 
@@ -283,7 +283,7 @@ async def success():
 
 **_Response Model In Abstract:_**
 
-![apiexception-responseModel.gif](assets/apiexception-responseModel.gif)
+![apiexception-responseModel.gif](docs/assets/apiexception-responseModel.gif)
 
 
 ---
