@@ -2,8 +2,10 @@ from __future__ import annotations
 
 import logging
 import traceback
-from typing import Callable, Tuple, Optional, Dict, Any, Iterable, Union
+from typing import Callable, Tuple, Optional, Dict, Any, Iterable, Union, Awaitable
 from typing import Literal
+import inspect
+
 
 from fastapi import FastAPI, Request
 from fastapi.encoders import jsonable_encoder
@@ -40,7 +42,11 @@ __all__ = [
 
 LogLevelLiteral = Literal[10, 20, 30, 40, 50]
 HeaderKeys = Tuple[str, ...]
-ExtraLogFields = Callable[[Request, Optional[BaseException]], Dict[str, Any]]
+
+ExtraLogFields = Callable[
+    [Callable[[Request, Optional[BaseException]], Dict[str, Any]]],
+    Callable[[Request, Optional[BaseException]], Awaitable[Dict[str, Any]]]
+]
 
 
 def register_exception_handlers(
@@ -115,6 +121,8 @@ def register_exception_handlers(
     extra_log_fields : Callable[[Request, Optional[BaseException]], Dict[str, Any]] | None, default=None
         A hook to inject **custom** fields into the log `meta`. Receives `(request, exc)` and must return a dict.
         Useful for business context (tenant_id, feature flags, masked user ids, etc.).
+        def my_fields(req, exc): ...
+        async def my_fields(req, exc): ...
         Example:
             ```python
             def my_extra_fields(req, exc):
@@ -364,9 +372,12 @@ def rfc7807():
 
             if extra_log_fields:
                 try:
-                    meta.update(extra_log_fields(request, exc))
+                    result = extra_log_fields(request, exc)
+                    if inspect.isawaitable(result):
+                        result = await result
+                    if isinstance(result, dict):
+                        meta.update(result)
                 except Exception:
-                    # Avoid breaking the handler due to user hook errors
                     pass
 
             if log_traceback and effective_level <= logging.DEBUG:

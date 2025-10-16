@@ -4,6 +4,34 @@ All notable changes to APIException will be documented here.
 This project uses *Semantic Versioning*.
 
 
+---
+
+## [0.2.1] - 2025-10-16
+### Added
+- **Async support** for `extra_log_fields`:  
+  You can now define your callback as an `async def` function and directly use  
+  `await request.body()` or other asynchronous operations inside it.  
+  Backward compatibility for sync functions is fully preserved.
+- **Python 3.9 compatibility restored**:  
+  Introduced conditional import of `TypeGuard` via `typing_extensions`  
+  to ensure full support for Python 3.9 environments.
+- **typing-extensions** added as a dependency for backward-compatible typing features.
+
+### Changed
+- `response_utils.py` refactored for cleaner type-safety and full cross-version support.  
+- Updated `pyproject.toml`:
+  - Python version lowered to `>=3.9,<4.0`
+  - Added `typing-extensions>=4.0.0`
+- Internal handlers now safely await async results from `extra_log_fields`,  
+  ensuring consistent behavior across all exception types.
+
+### Fixed
+- Fixed `ImportError` on Python 3.9 caused by direct import of `TypeGuard` from `typing`.
+- Minor logging improvements and better exception trace readability.
+
+---
+
+
 ## [0.2.0] - 2025-08-23
 ### Added
 - **Advanced logging customizations** in `register_exception_handlers`:

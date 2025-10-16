@@ -1,4 +1,12 @@
-from typing import Dict, Tuple, TypeGuard, Union
+from typing import Dict, Tuple, Union
+
+# --- Backward-compatible TypeGuard import (Python 3.8–3.9 support) ---
+try:
+    from typing import TypeGuard  # Python 3.10+
+except ImportError:
+    from typing_extensions import TypeGuard  # For Python <3.10
+
+
 from api_exception.response_model import ResponseModel
 from api_exception.enums import ExceptionStatus, BaseExceptionCode
 from api_exception.rfc7807_model import RFC7807ResponseModel

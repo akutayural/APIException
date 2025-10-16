@@ -34,15 +34,20 @@ Reading the [full documentation](https://akutayural.github.io/APIException/) is 
 ---
 
 > [!IMPORTANT]
-    New in v0.2.0: <br>
-    - Advanced structured logging (`log_level`, `log_header_keys`, `extra_log_fields`)  
-    - Response headers echo (`response_headers`)  
-    - Type-safety improvements with `mypy`  
-    - APIException accepts `headers` param <br>
-    - Cleaner import/export structure <br>
-    - 📢 Featured in [**Python Weekly #710**](https://www.pythonweekly.com/p/python-weekly-issue-710-august-14-2025-3200567a10d37d87) 🎉<br>
-    - 👉 For full details and usage examples, see  
-    [**register_exception_handlers reference**](https://akutayural.github.io/APIException/usage/register_exception_handlers/)
+> **New in v0.2.1:**   <br>
+> - ✨ **Async support** for `extra_log_fields` → you can now use `await request.body()` directly.  
+> - 🧩 **Python 3.9 compatibility restored** with `typing_extensions.TypeGuard`.  
+> - ⚡ Improved `response_utils.py` type-safety for all Python versions.   <br>
+> - 📦 Updated dependencies and `pyproject.toml` for wider environment support.   <br>
+>  
+> **Previously in v0.2.0:**   <br>
+> - Advanced structured logging (`log_level`, `log_header_keys`, `extra_log_fields`)  
+> - Response headers echo (`response_headers`)  
+> - Type-safety improvements with `mypy`  
+> - `APIException` accepts `headers` param   <br>
+> - Cleaner import/export structure   <br>
+> - 📢 Featured in [**Python Weekly #710**](https://www.pythonweekly.com/p/python-weekly-issue-710-august-14-2025-3200567a10d37d87) 🎉   <br>
+> - 👉 For full details and usage examples, see [**register_exception_handlers reference**](https://akutayural.github.io/APIException/usage/register_exception_handlers/) <br>
 
 ---
 
@@ -448,7 +453,7 @@ Benchmark scripts and raw Locust reports are available in the [benchmark](https:
 
 ## 📜 Changelog
 
-Currently, the most stable and suggested version is v0.2.0
+Currently, the most stable and suggested version is v0.2.1
 
 👉 [See full changelog](https://akutayural.github.io/APIException/changelog/)
 

@@ -17,8 +17,8 @@ logger.setLevel("DEBUG")
 app = FastAPI()
 
 
-def my_extra_fields(request: Request, exc: Optional[BaseException]) -> Dict[str, Any]:
-    # Örn. özel header'ı maskeyle logla
+async def my_extra_fields(request: Request, exc: Optional[BaseException]) -> Dict[str, Any]:
+    # Ex: Mask extra fields
     user_id = request.headers.get("x-user-id", "anonymous")
     return {
         "masked_user_id": f"user-{user_id[-2:]}",
