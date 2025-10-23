@@ -254,7 +254,7 @@ class TestAPIException(unittest.TestCase):
         body = response.json()
         self.assertEqual(body["status"], "FAIL")
         self.assertEqual(body["error_code"], "ISE-500")
-        self.assertIn("wrong", body["message"])
+        self.assertIn("Internal", body["message"])
         self.assertIn("An unexpected error occurred", body["description"])
 
 
