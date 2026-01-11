@@ -11,7 +11,15 @@ from fastapi import FastAPI, Request
 from fastapi.encoders import jsonable_encoder
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
-from starlette.status import HTTP_422_UNPROCESSABLE_ENTITY
+
+try:
+    # Starlette renamed this constant in newer versions
+    from starlette.status import HTTP_422_UNPROCESSABLE_CONTENT
+except ImportError:
+    # Backward compatible for older Starlette versions
+    from starlette.status import (
+        HTTP_422_UNPROCESSABLE_ENTITY as HTTP_422_UNPROCESSABLE_CONTENT,
+    )
 
 from .rfc7807_model import RFC7807ResponseModel
 from .enums import ExceptionCode, ExceptionStatus, BaseExceptionCode, ResponseFormat
@@ -468,7 +476,7 @@ def rfc7807():
             if response_format == ResponseFormat.RFC7807:
                 content = RFC7807ResponseModel(
                     title=err.message,
-                    status=HTTP_422_UNPROCESSABLE_ENTITY,
+                    status=HTTP_422_UNPROCESSABLE_CONTENT,
                     detail=description,
                     type=err.rfc7807_type,
                     instance=err.rfc7807_instance,
@@ -510,7 +518,7 @@ def rfc7807():
                     pass
 
             return JSONResponse(
-                status_code=HTTP_422_UNPROCESSABLE_ENTITY,
+                status_code=HTTP_422_UNPROCESSABLE_CONTENT,
                 content=content,
                 media_type=media_type,
                 headers=base_headers,

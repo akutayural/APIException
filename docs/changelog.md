@@ -6,6 +6,22 @@ This project uses *Semantic Versioning*.
 
 ---
 
+## [0.2.2] - 2026-01-11
+### Fixed
+- Replaced deprecated `HTTP_422_UNPROCESSABLE_ENTITY` import with
+  `HTTP_422_UNPROCESSABLE_CONTENT` to ensure compatibility with newer
+  Starlette versions.
+- Added backward-compatible fallback for older Starlette releases to avoid
+  breaking existing projects.
+- Eliminated deprecation warnings related to HTTP 422 status handling.
+
+### Improved
+- Verified full compatibility with **pip**, **uv**, and **Poetry** package managers.
+- Confirmed successful installation via:
+  - PyPI (`uv add apiexception`)
+  - GitHub repository (`uv add git+https://github.com/akutayural/APIException.git`)
+
+
 ## [0.2.1] - 2025-10-16
 ### Added
 - **Async support** for `extra_log_fields`:  

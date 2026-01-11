@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "apiexception"
-version = "0.2.1"
+version = "0.2.2"
 description = "Consistent JSON response formatting and exception & error handling for FastAPI applications"
 authors = ["Ahmet Kutay URAL <ahmetkutayural@gmail.com>"]
 readme = "README.md"
