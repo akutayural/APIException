@@ -4,6 +4,23 @@ All notable changes to APIException will be documented here.
 This project uses *Semantic Versioning*.
 
 
+## [0.2.3] - 2026-01-21
+### Improved
+- Internal exception handling flow reviewed and stabilised for long-term maintenance.
+- Logging paths and async handling verified across all supported Python versions.
+- Minor internal refactors to improve readability and future extensibility without changing public APIs.
+- Confirmed backward compatibility with all existing `register_exception_handlers` usage patterns.
+
+### Documentation
+- README refined with clearer onboarding examples and improved Quickstart section.
+- Community & recognition section expanded with external mentions and ecosystem visibility.
+- Changelog and docs aligned to reflect current stable usage patterns and production readiness.
+
+### Maintenance
+- This release intentionally introduces **no breaking changes**.
+- Focused on stability, clarity, and long-term maintainability.
+- Actively used in production environments; no migration required for existing users.
+
 ---
 
 ## [0.2.2] - 2026-01-11
@@ -21,6 +38,7 @@ This project uses *Semantic Versioning*.
   - PyPI (`uv add apiexception`)
   - GitHub repository (`uv add git+https://github.com/akutayural/APIException.git`)
 
+---
 
 ## [0.2.1] - 2025-10-16
 ### Added
@@ -84,6 +102,7 @@ This project uses *Semantic Versioning*.
 - Added missing `import traceback` in `__init__.py`.  
   This resolves a `NameError` when using `register_exception_handlers` with traceback logging enabled.
 
+---
 
 ## [0.1.20] - 2025-08-18
 
@@ -95,6 +114,7 @@ This project uses *Semantic Versioning*.
 - Resolved IDE red import warnings when using the library in external projects.
 - Improved top-level import resolution and consistency across modules.
 
+---
 
 ## [0.1.19] - 2025-08-18
 
@@ -108,9 +128,9 @@ This project uses *Semantic Versioning*.
 #### Fixed
 - Example and README imports updated to use new unified style.
 
+---
 
 ## [0.1.18] - 2025-08-17
-
 
 ### Added
 - Global logging control (`set_global_log`) with `log` param in `register_exception_handlers`.
@@ -125,6 +145,8 @@ This project uses *Semantic Versioning*.
 ### Fixed
 - Fallback middleware now returns HTTP 500 instead of 422 for unexpected errors.
 - Traceback scope bug fixed in handlers.
+
+---
 
 ## [v0.1.17] - 2025-08-11
 
@@ -152,6 +174,7 @@ This project uses *Semantic Versioning*.
 
 - Readme.md has been updated. 
 
+---
 
 ## [v0.1.16] - 2025-07-22
 
@@ -161,6 +184,7 @@ This project uses *Semantic Versioning*.
 
 - Readme.md has been updated. 
 
+---
 
 ## [v0.1.15] - 2025-07-22
 
@@ -172,12 +196,15 @@ This project uses *Semantic Versioning*.
 
 - Readme.md has been updated. 
 
+---
+
 ## [v0.1.14] - 2025-07-22
 
 - setup.py has been updated.
 
 - Project name has been updated. Instead of `APIException` we will use `apiexception` to comply with `PEP 625`.
 
+---
 
 ## [v0.1.13] - 2025-07-21
 
@@ -191,7 +218,7 @@ This project uses *Semantic Versioning*.
 
 - Readme has been updated. New gifs have been added.
 
-
+---
 
 ## [0.1.12] - 2025-07-14
 
@@ -201,6 +228,7 @@ This project uses *Semantic Versioning*.
 
 - `__all__` includes more methods.
 
+---
 
 ## [0.1.11] - 2025-07-13
 
@@ -210,6 +238,7 @@ This project uses *Semantic Versioning*.
 
 - Production-ready logging for all exceptions
 
+---
 
 ## [0.1.0] - 2025-06-25
 

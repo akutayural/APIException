@@ -13,6 +13,7 @@
 [![Ruff](https://img.shields.io/badge/linting-ruff-%23ea580c?logo=ruff&logoColor=white)](https://github.com/astral-sh/ruff)
 [![uv](https://img.shields.io/badge/packaging-uv-%234285F4?logo=python&logoColor=white)](https://github.com/astral-sh/uv)
 [![Poetry](https://img.shields.io/badge/dependencies-poetry-%2360A5FA?logo=poetry&logoColor=white)](https://python-poetry.org/)
+[![PyPI status](https://img.shields.io/pypi/status/apiexception?style=flat)](https://pypi.org/project/apiexception/)
 
 
 **APIException** is a robust, production-ready Python library for FastAPI that simplifies exception handling and ensures consistent, well-structured API responses. Designed for developers who want to eliminate boilerplate error handling and improve Swagger/OpenAPI documentation, APIException makes your FastAPI projects cleaner and easier to maintain.
@@ -34,20 +35,13 @@ Reading the [full documentation](https://akutayural.github.io/APIException/) is 
 ---
 
 > [!IMPORTANT]
-> **New in v0.2.1:**   <br>
-> - ✨ **Async support** for `extra_log_fields` → you can now use `await request.body()` directly.  
-> - 🧩 **Python 3.9 compatibility restored** with `typing_extensions.TypeGuard`.  
-> - ⚡ Improved `response_utils.py` type-safety for all Python versions.   <br>
-> - 📦 Updated dependencies and `pyproject.toml` for wider environment support.   <br>
+> **Actively maintained. Highly recommended.**
 >  
-> **Previously in v0.2.0:**   <br>
-> - Advanced structured logging (`log_level`, `log_header_keys`, `extra_log_fields`)  
-> - Response headers echo (`response_headers`)  
-> - Type-safety improvements with `mypy`  
-> - `APIException` accepts `headers` param   <br>
-> - Cleaner import/export structure   <br>
-> - 📢 Featured in [**Python Weekly #710**](https://www.pythonweekly.com/p/python-weekly-issue-710-august-14-2025-3200567a10d37d87) 🎉   <br>
-> - 👉 For full details and usage examples, see [**register_exception_handlers reference**](https://akutayural.github.io/APIException/usage/register_exception_handlers/) <br>
+> APIException is actively maintained and used in production FastAPI services.  
+> It is designed to be integrated as a library, not copied piece by piece into projects.  
+>  
+> If you find yourself copy-pasting error handling logic across services,  
+> this library exists to replace that pattern with something cleaner and more sustainable.
 
 ---
 
@@ -63,21 +57,71 @@ pip install apiexception
 
  ## ⚡ Quickstart: How to Integrate APIException
 
-**1️⃣ Register the Handler**
+**1️⃣ Plug and Play**
 
 ```python
-from api_exception import register_exception_handlers, logger
 from fastapi import FastAPI
+from pydantic import BaseModel, Field
+from api_exception import (
+    register_exception_handlers,
+    APIException,
+    BaseExceptionCode,
+    ResponseModel,
+    APIResponse,
+)
 
 app = FastAPI()
 register_exception_handlers(app)  # uses ResponseModel by default
 
-logger.setLevel("INFO")  # Set logging level if needed
+
+class CustomExceptionCode(BaseExceptionCode):
+    USER_NOT_FOUND = ("USR-404", "User not found.", "The user ID does not exist.")
+
+
+class UserModel(BaseModel):
+    id: int = Field(..., example=1)
+    username: str = Field(..., example="John Doe")
+
+
+@app.get(
+    "/user/{user_id}",
+    response_model=ResponseModel[UserModel],
+    responses=APIResponse.default(),
+)
+async def user(user_id: int):
+    if user_id == 1:
+        raise APIException(
+            error_code=CustomExceptionCode.USER_NOT_FOUND,
+            http_status_code=404,
+        )
+    
+    if user_id == 3:
+        a = 1
+        b = 0
+        c = a / b  # This will raise ZeroDivisionError and be caught by the global exception handler
+        return c
+
+    return ResponseModel[UserModel](
+        data=UserModel(id=user_id, username="John Doe"),
+        description="User retrieved successfully.",
+    )
+
 ```
+
+
+![_user_{user_id}.gif](/assets/apiexception-indexBasicUsage-1.gif)
+
+![apiexception-indexApiExceptionLog.png](docs/advanced/exception_1.png)
+
+
+⭐ **Enjoying APIException?**  
+If this library saved you time or helped standardise your FastAPI responses,  
+consider giving it a ⭐ on GitHub. It really helps the project grow.
+
 
 ---
 
- ## 🔍 Example: Error Handling with Custom Codes
+ ## 🔍 Example: More Detailed Error Handling Example with Custom Codes
 
 ```python
 from typing import List, Optional, Any, Dict
@@ -172,6 +216,14 @@ When you run your FastAPI app and open **Swagger UI** (`/docs`),
 your endpoints will display **clean, predictable response schemas** like this below:
 
 ![_user_{user_id}.gif](/assets/apiexception-indexBasicUsage-1.gif)
+
+![apiexception-indexApiExceptionLog.png](docs/advanced/exception_1.png)
+
+
+
+For more examples, check it out in the [examples directory](https://github.com/akutayural/APIException/tree/main/examples).
+
+
 
 ---
 
@@ -477,14 +529,22 @@ https://akutayural.github.io/APIException/
 🐍 **PyPI**  
 https://pypi.org/project/apiexception/
 
-💻 **Author Website**  
-https://ahmetkutayural.dev
+💻 **Author **  
+Ahmet Kutay Ural
+
+
+---
+⭐ **Used in real-world FastAPI projects**  
+APIException is actively used in production systems and shared across the Python community.  
+If you're using it in your project, a ⭐ on GitHub helps signal support and keeps development active.
 
 ---
 
 ## 🌍 Community & Recognition
 
 - 📢 Featured in [**Python Weekly #710**](https://www.pythonweekly.com/p/python-weekly-issue-710-august-14-2025-3200567a10d37d87) 🎉  
-- 🔥 Ranked **#3** globally in [r/FastAPI](https://www.reddit.com/r/FastAPI/comments/1ma39rq/make_your_fastapi_responses_clean_consistent/) under the *pip package* flair.  
+- 🏆 Selected as one of the **Top Python Libraries of 2025** by [**Tryolabs**](https://tryolabs.com/blog/top-python-libraries-2025) 
+- 🐍 Shared by [**PythonHub**](https://x.com/PythonHub/status/1957733129000472650) on X (Twitter)
+- 🐦 Shared by [@tom_doerr](https://x.com/tom_doerr/status/1996308358916116964) on X (Twitter)
 - ⭐ Gaining traction on GitHub with developers adopting it for real-world FastAPI projects.  
 - 💬 Actively discussed and shared across the Python community.

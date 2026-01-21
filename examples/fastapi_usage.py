@@ -27,17 +27,23 @@ async def my_extra_fields(request: Request, exc: Optional[BaseException]) -> Dic
         "exc_type": type(exc).__name__ if exc else None,
     }
 
-
+# Change these settings to see different behaviors
+# They are explained in detail in the documentation.
+# You can customize logging, response formats, headers, and more.
+# Once you set this up, all your FastAPI routes will automatically use these exception handlers.
+# Suggested.
 register_exception_handlers(app,
                             response_format=ResponseFormat.RESPONSE_MODEL,
-                            log_traceback=True,
-                            log_traceback_unhandled_exception=False,
-                            log_level=10,
+                            use_fallback_middleware=True,
                             log=True,
-                            response_headers=("x-user-id",),
+                            log_traceback=True,
+                            log_traceback_unhandled_exception=True,
+                            include_null_data_field_in_openapi=True,
+                            log_level=10,
                             log_request_context=True,
                             log_header_keys=("x-user-id",),
-                            extra_log_fields=my_extra_fields
+                            extra_log_fields=my_extra_fields,
+                            response_headers=("x-user-id",),
                             )
 
 '''

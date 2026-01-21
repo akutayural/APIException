@@ -52,8 +52,8 @@ LogLevelLiteral = Literal[10, 20, 30, 40, 50]
 HeaderKeys = Tuple[str, ...]
 
 ExtraLogFields = Callable[
-    [Callable[[Request, Optional[BaseException]], Dict[str, Any]]],
-    Callable[[Request, Optional[BaseException]], Awaitable[Dict[str, Any]]]
+    [Request, Optional[BaseException]],
+    Union[Dict[str, Any], Awaitable[Dict[str, Any]]]
 ]
 
 
@@ -389,7 +389,7 @@ def rfc7807():
                     pass
 
             if log_traceback and effective_level <= logging.DEBUG:
-                tb = traceback.format_exc()
+                tb = "".join(traceback.format_exception(type(exc), exc, exc.__traceback__))
                 log_with_meta(logging.ERROR, f"APIException: {exc.message}", meta)
                 logger.error(f"Traceback:\n{tb}")
 
@@ -445,7 +445,7 @@ def rfc7807():
                 msg = "Validation error"
 
             if log:
-                tb = traceback.format_exc()
+                tb = "".join(traceback.format_exception(type(exc), exc, exc.__traceback__))
                 meta: Dict[str, Any] = {
                     "event": "validation_error",
                     "path": request.url.path,
@@ -459,7 +459,11 @@ def rfc7807():
                     meta.update(_collect_headers(request, log_header_keys))
                 if extra_log_fields:
                     try:
-                        meta.update(extra_log_fields(request, exc))
+                        result = extra_log_fields(request, exc)
+                        if inspect.isawaitable(result):
+                            result = await result
+                        if isinstance(result, dict):
+                            meta.update(result)
                     except Exception:
                         pass
 
@@ -529,7 +533,7 @@ def rfc7807():
             try:
                 return await call_next(request)
             except Exception as e:
-                tb = traceback.format_exc()
+                tb = "".join(traceback.format_exception(type(e), e, e.__traceback__))
 
                 if log:
                     meta: Dict[str, Any] = {
@@ -545,7 +549,11 @@ def rfc7807():
                         meta.update(_collect_headers(request, log_header_keys))
                     if extra_log_fields:
                         try:
-                            meta.update(extra_log_fields(request, e))
+                            result = extra_log_fields(request, e)
+                            if inspect.isawaitable(result):
+                                result = await result
+                            if isinstance(result, dict):
+                                meta.update(result)
                         except Exception:
                             pass
 
