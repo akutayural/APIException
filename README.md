@@ -36,13 +36,18 @@ Reading the [full documentation](https://akutayural.github.io/APIException/) is 
 
 > [!IMPORTANT]
 > **Actively maintained. Highly recommended.**
->  
-> APIException is actively maintained and used in production FastAPI services.  
-> It is designed to be integrated as a library, not copied piece by piece into projects.  
->  
-> If you find yourself copy-pasting error handling logic across services,  
-> this library exists to replace that pattern with something cleaner and more sustainable.
-
+>
+> **APIException** is actively maintained and used in real-world, production FastAPI services.
+> It is designed to be **integrated as a library**, not copied piece by piece into projects.
+>
+> New features, bug fixes, performance improvements, and documentation updates
+> are shipped continuously through releases.
+> If you copy the implementation instead of installing the library,
+> you will **miss future improvements**, fixes, and enhancements by design.
+>
+> If you find yourself copy-pasting error handling logic across services,
+> this library exists to replace that pattern with something **cleaner, safer,
+> and more sustainable over time**.
 ---
 
 ## 📦 Installation via pip
