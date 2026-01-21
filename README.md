@@ -14,7 +14,7 @@
 [![uv](https://img.shields.io/badge/packaging-uv-%234285F4?logo=python&logoColor=white)](https://github.com/astral-sh/uv)
 [![Poetry](https://img.shields.io/badge/dependencies-poetry-%2360A5FA?logo=poetry&logoColor=white)](https://python-poetry.org/)
 [![PyPI status](https://img.shields.io/pypi/status/apiexception?style=flat)](https://pypi.org/project/apiexception/)
-
+[![Sponsor](https://img.shields.io/badge/sponsor-GitHub-pink)](https://github.com/sponsors/akutayural)
 
 **APIException** is a robust, production-ready Python library for FastAPI that simplifies exception handling and ensures consistent, well-structured API responses. Designed for developers who want to eliminate boilerplate error handling and improve Swagger/OpenAPI documentation, APIException makes your FastAPI projects cleaner and easier to maintain.
 
@@ -48,6 +48,18 @@ Reading the [full documentation](https://akutayural.github.io/APIException/) is 
 > If you find yourself copy-pasting error handling logic across services,
 > this library exists to replace that pattern with something **cleaner, safer,
 > and more sustainable over time**.
+---
+
+## ❤️ Support & Sponsorship
+
+APIException is actively maintained and used in production FastAPI services.
+
+If this library saves you time or replaces copy-pasted error-handling logic in your projects,
+you can support its continued development and long-term maintenance.
+
+👉 **Sponsor the project:**  
+https://github.com/sponsors/akutayural
+
 ---
 
 ## 📦 Installation via pip
